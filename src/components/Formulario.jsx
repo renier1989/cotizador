@@ -3,10 +3,7 @@ import { MARCAS, YEARS, PLANES } from "../constants";
 import useCotizador from "../hooks/useCotizador";
 
 function Formulario() {
-
-    const { saludo, fnSaludo } = useCotizador();
-    console.log(saludo);
-    fnSaludo();
+  const {datos, handleChange } = useCotizador();
 
   return (
     <>
@@ -16,7 +13,9 @@ function Formulario() {
             marca
           </label>
           <select
-            name="marcar"
+            onChange={(e) => handleChange(e)}
+            value={datos.marca}
+            name="marca"
             className="w-full p-3 bg-white border border-gray-200 "
           >
             <option value="">-- Seleccione la Marca --</option>
@@ -32,7 +31,9 @@ function Formulario() {
             años
           </label>
           <select
-            name="marcar"
+            onChange={(e) => handleChange(e)}
+            value={datos.year}
+            name="year"
             className="w-full p-3 bg-white border border-gray-200 "
           >
             <option value="">-- Seleccione el año --</option>
@@ -51,12 +52,21 @@ function Formulario() {
             {PLANES.map((plan) => (
               <Fragment key={plan.id}>
                 <label>{plan.nombre}</label>
-                <input type="radio" name="plan" value={plan.id} />
+                <input
+                  type="radio"
+                  name="plan"
+                  value={plan.id}
+                  onChange={(e) => handleChange(e)}
+                />
               </Fragment>
             ))}
           </div>
         </div>
-        <input type="submit" className="w-full bg-indigo-500 hover:bg-indigo-600 transition-colors text-white cursor-pointer p-3 uppercase font-bold" value="cotizar" />
+        <input
+          type="submit"
+          className="w-full bg-indigo-500 hover:bg-indigo-600 transition-colors text-white cursor-pointer p-3 uppercase font-bold"
+          value="cotizar"
+        />
       </form>
     </>
   );
