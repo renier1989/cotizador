@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 import { MARCAS, YEARS, PLANES } from "../constants";
-import { useCoti } from "../context/CotizadorProvider";
+import useCotizador from "../hooks/useCotizador";
+
 function Formulario() {
 
-    const {saludo, fnSaludo} = useCoti();
+    const { saludo, fnSaludo } = useCotizador();
     console.log(saludo);
-
     fnSaludo();
 
   return (

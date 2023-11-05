@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
 import { createContext } from "react";
 
 const CotizadorContext = createContext();
@@ -22,11 +21,6 @@ const CotizadorProvider = ({ children }) => {
   );
 };
 
-function useCoti() {
-  const coti = useContext(CotizadorContext);
-  return coti;
-}
-
-export { useCoti };
+export { CotizadorContext };
 
 export default CotizadorProvider;
