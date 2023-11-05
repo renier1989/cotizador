@@ -61,7 +61,7 @@ const CotizadorProvider = ({ children }) => {
         setError,
         cotizarSeguro,
         resultado,
-        setResultado,
+        
       }}
     >
       {children}
