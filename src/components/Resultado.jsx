@@ -1,13 +1,17 @@
 import useCotizador from "../hooks/useCotizador";
 import { MARCAS, PLANES } from "../constants";
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useMemo } from "react";
 const Resultado = () => {
   const { resultado, datos } = useCotizador();
   const { marca, plan, year } = datos;
 
   const yearRef = useRef(year);
-  const [nombreMarca] = useCallback(MARCAS.filter((m) => m.id === Number(marca)), [resultado]);
-  const [nombrePlan] = useCallback(PLANES.filter((p) => p.id === Number(plan)), [resultado]);
+// //   esto es cuando se usa el hook de useCallback
+//   const [nombreMarca] = useCallback(MARCAS.filter((m) => m.id === Number(marca)), [resultado]);
+//   const [nombrePlan] = useCallback(PLANES.filter((p) => p.id === Number(plan)), [resultado]);
+//   esto es cuando se usa el hook de useMemo
+  const [nombreMarca] = useMemo(() =>MARCAS.filter((m) => m.id === Number(marca)), [resultado]);
+  const [nombrePlan] = useMemo(()=>PLANES.filter((p) => p.id === Number(plan)), [resultado]);
 
   if (resultado === 0) {
     return;
