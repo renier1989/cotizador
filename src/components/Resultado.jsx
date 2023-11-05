@@ -5,7 +5,8 @@ const Resultado = () => {
   const {marca, plan, year} = datos
 
   const [nombreMarca] = MARCAS.filter(m =>m.id === Number(marca));
-  console.log(nombreMarca);
+  const [nombrePlan] = PLANES.filter(p =>p.id === Number(plan));
+  
 
   if (resultado === 0) {
     return;
@@ -16,7 +17,19 @@ const Resultado = () => {
     </h2>
     <p className="my-2"> 
     <span className="font-bold">Marca : </span>
-        {marca}
+        {nombreMarca.nombre}
+    </p>
+    <p className="my-2"> 
+    <span className="font-bold">Plan : </span>
+        {nombrePlan.nombre}
+    </p>
+    <p className="my-2"> 
+    <span className="font-bold">Año del Auto : </span>
+        {year}
+    </p>
+    <p className="my-2 text-2xl"> 
+    <span className="font-bold">Total Cotización : </span>
+        {resultado}
     </p>
   </div>;
 };
