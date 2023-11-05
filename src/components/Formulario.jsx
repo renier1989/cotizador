@@ -1,6 +1,13 @@
 import { Fragment } from "react";
 import { MARCAS, YEARS, PLANES } from "../constants";
+import { useCoti } from "../context/CotizadorProvider";
 function Formulario() {
+
+    const {saludo, fnSaludo} = useCoti();
+    console.log(saludo);
+
+    fnSaludo();
+
   return (
     <>
       <form>
